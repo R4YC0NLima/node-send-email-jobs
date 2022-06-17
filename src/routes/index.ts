@@ -1,13 +1,7 @@
-import UserController from "../controllers/UserController";
-import { createUserController } from "../useCases/CreateUser";
-import { Request, Response, Router } from 'express';
+import express from 'express';
+import { routesUsers } from "../modules/users/routes";
 
-const routes = Router();
-routes.get('/', (req: Request, res: Response) => res.send('Hello World!'));
-routes.post('/users', UserController.store);
+const route   = express();
+route.use('/users', routesUsers);
 
-// routes.post('/users', (request, response) => {
-//     return createUserController.handle(request, response);
-// });
-
-export { routes }
+export { route }
