@@ -2,7 +2,7 @@ import Mail from '../lib/Mail';
 
 export default {
     key: 'RegistrationMail',
-    async handle({ data }) {
+    async handle(data: any) {
         const { user } = data;
         await Mail.sendMail({
             from: 'Queue Test <queue@test.com.br>',
