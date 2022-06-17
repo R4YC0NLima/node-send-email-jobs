@@ -20,3 +20,5 @@ app.listen(port, () => {
   console.log(`For the UI, open http://localhost:${port}/admin/queues.`)
   console.log(`Make sure Redis is running on port ${process.env.REDIS_PORT} by default.`)
 });
+
+export { app }

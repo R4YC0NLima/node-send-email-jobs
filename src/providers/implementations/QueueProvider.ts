@@ -9,7 +9,7 @@ const queues = Object.values(jobs).map(job => ({
     handle: job.handle
 }));
 
-export class QueueProvider implements IQueueProvider {
+export class QueueTProvider implements IQueueProvider {
     constructor(public queues: any) {}
 
     async add(name: string, data: object): Promise<void> {
