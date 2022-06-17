@@ -1,10 +1,11 @@
-# Ssistema de envio de email
+# Sistema de envio de email
 
 <table style="width:100%">
     <thead>
       <tr>
         <th></th>
-        <th>Ambiente de trabalho</th>
+        <th>Ferramentas</th>
+        <th>Documentação</th>
       </tr>
     </thead>
     <tbody>  
