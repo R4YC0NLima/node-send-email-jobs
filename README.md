@@ -44,7 +44,9 @@
 
 ## Objetivo da aplicação
 * [x] - Cadastrar usuário
+* [x] - Atualizar usuários
 * [x] - Listar usuários
+* [x] - Deletar usuários
 * [x] - Enviar email
 * [ ] - Processamento de email em fila
 * [ ] - Testes unitários e de integração

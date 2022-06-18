@@ -1,7 +1,7 @@
 import { User } from "../../entities/User";
 import { IMailProvider } from "../../../../providers/IMailProvider";
 // import { IQueueProvider } from "../../../../providers/IQueueProvider";
-import { ICreateUserRequestDTO, IUsersRepository } from "../../repositories/IUsersRepository"
+import { IUserRequestDTO, IUsersRepository } from "../../repositories/IUsersRepository"
 import { hash } from "bcrypt";
 
 export class CreateUserUseCase {
@@ -11,7 +11,7 @@ export class CreateUserUseCase {
         // private queueProvider       : IQueueProvider
     ) {}
     
-    async execute(data: ICreateUserRequestDTO): Promise<User> {
+    async execute(data: IUserRequestDTO): Promise<User> {
         const userAlreadyExists = await this.usersRepositories.findByEmail(data.email);
         
         if (userAlreadyExists) {
@@ -19,8 +19,8 @@ export class CreateUserUseCase {
         }
 
         const user = await this.usersRepositories.create({
-            name: data.name,
-            email: data.email,
+            name    : data.name,
+            email   : data.email,
             password: await hash(data.password,8),
         });
 
