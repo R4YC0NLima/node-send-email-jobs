@@ -1,0 +1,95 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "User Registration",
+        "description": "API para criação de usuários",
+        "version": "1.0.0",
+        "contact":{
+            "email":"alimadeoliveiranatalia@gmail.com"
+        }
+    },
+    "paths":{
+        "/users": {
+            "post": {
+                "tags":["Users"],
+                "sumary": "Criar um novo Usuário",
+                "description": "Criar um usuario",
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "description": "Nome do Usuário",
+                                        "type":"string"
+                                    },
+                                    "email": {
+                                        "description":"Email do Usuário",
+                                        "type":"string"
+                                    },
+                                    "password": {
+                                        "description":"Senha do Usuário",
+                                        "type":"string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Your Username",
+                                    "email":"seu_email@mail.com",
+                                    "password":"trtrtrtrtrrtrtr"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "properties": {
+                                        "name": {
+                                            "type":"string"
+                                        },
+                                        "email": {
+                                            "type":"string"
+                                        },
+                                        "senha": {
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description":"User Alreay Exists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type":"string"
+                                            }
+                                        },
+                                        "example": {
+                                            "error": "Email Already Exists!"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    
+                }
+            }            
+        }  
+        
+    }
+}
