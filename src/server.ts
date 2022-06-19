@@ -10,7 +10,7 @@ import express from 'express';
 import { route } from './routes';
 import { routesUsers } from './modules/users/routes';
 
-const port  = 3000 || process.env.PORT;
+const port  = 3333 || process.env.PORT;
 const app   = express();
 
 app.use(cors())
