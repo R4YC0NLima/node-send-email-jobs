@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import 'dotenv/config';
 import './database';
-import './bull-dash';
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from "./swagger.json";
 
@@ -17,9 +16,6 @@ app.use(cors())
 app.use(express.json());
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(route);
-
-route.use('/users', routesUsers);
-
 
 app.listen(port, () => {
   console.log(`Running on port ${port}.`)

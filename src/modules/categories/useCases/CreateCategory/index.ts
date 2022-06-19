@@ -1,16 +1,12 @@
-// import { QueueProvider } from "../../../../providers/implementations/QueueProvider";
-import { MailtrapProvider } from "../../../../providers/implementations/MailtrapProvider";
+
 import { CategoryRepository } from "../../repositories/implementations/CategoryRepository";
-import { CreateUserController } from "./CreateCategoryController";
+import { CreateCategoryController } from "./CreateCategoryController";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
-const mailtrapMailProvider  = new MailtrapProvider();
-// const queueProvider         = new QueueProvider({});
+export default (): CreateCategoryController => {
+    const categoryRepository        = new CategoryRepository();
+    const createCategoryUseCase     = new CreateCategoryUseCase(categoryRepository);
+    const createCategoryController  = new CreateCategoryController(createCategoryUseCase);
 
-export default (): CreateUserController => {
-    const categoryRepository    = new CategoryRepository();
-    const createUserUseCase     = new CreateCategoryUseCase(categoryRepository);
-    const createUserController  = new CreateUserController(createUserUseCase);
-
-    return createUserController;
+    return createCategoryController;
 }

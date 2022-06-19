@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
-import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
+import { CreateProductUseCase } from "./CreateProductUseCase";
 
-export class CreateCategoryController {
-    constructor(private createCategoryUseCase: CreateCategoryUseCase) {}
+export class CreateProductController {
+    constructor(private createProductUseCase: CreateProductUseCase) {}
 
     async handle(request: Request, response: Response) {
         const data = request.body;
 
         try {
-            const user = await this.createCategoryUseCase.execute(data);
+            const user = await this.createProductUseCase.execute(data);
 
             return response.status(201).json(user);
         } catch (err: any) {

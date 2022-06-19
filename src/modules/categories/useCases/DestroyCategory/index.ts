@@ -1,13 +1,13 @@
 import { CategoryRepository } from "../../repositories/implementations/CategoryRepository";
-import { DestroyUserController } from "./DestroyUserController";
-import { DestroyUserUseCase } from "./DestroyUserUseCase";
+import { DestroyCategoryController } from "./DestroyCategoryController";
+import { DestroyCategoryUseCase } from "./DestroyCategoryUseCase";
 
-export default (): DestroyUserController => {
-    const userRepository        = new CategoryRepository();
+export default (): DestroyCategoryController => {
+    const categoryRepository        = new CategoryRepository();
 
-    const destroyUserUseCase     = new DestroyUserUseCase(userRepository);
+    const destroyCategoryUseCase     = new DestroyCategoryUseCase(categoryRepository);
 
-    const destroyUserController  = new DestroyUserController(destroyUserUseCase);
+    const destroyCategoryController  = new DestroyCategoryController(destroyCategoryUseCase);
 
-    return destroyUserController;
+    return destroyCategoryController;
 }

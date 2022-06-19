@@ -1,8 +1,8 @@
-import { ICategoriesRepository } from "../../repositories/ICategoriesRepository"
+import { IProductsRepository } from "../../repositories/IProductsRepository"
 
-export class DestroyUserUseCase {
+export class DestroyProductUseCase {
     constructor(
-        private usersRepositories   : ICategoriesRepository
+        private usersRepositories   : IProductsRepository
     ) {}
     
     async execute(id: string): Promise<void> {

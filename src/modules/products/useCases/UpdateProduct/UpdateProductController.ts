@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import { DestroyUserUseCase } from "./DestroyUserUseCase";
+import { UpdateProductUseCase } from "./UpdateProductUseCase";
 
-export class DestroyUserController {
-    constructor(private DestroyUserUseCase: DestroyUserUseCase) {}
+export class UpdateProductController {
+    constructor(private updateProductUseCase: UpdateProductUseCase) {}
 
     async handle(request: Request, response: Response) {
         const { id } = request.params
 
         try {
-            await this.DestroyUserUseCase.execute(id);
+            const user = await this.updateProductUseCase.execute(id, request.body);
 
-            return response.status(201).json({ msg: 'Usuário removido com sucesso!'});
+            return response.status(201).json(user);
         } catch (err: any) {
             return response.status(400).json({
                 message: err.message || 'Unexpected error.'

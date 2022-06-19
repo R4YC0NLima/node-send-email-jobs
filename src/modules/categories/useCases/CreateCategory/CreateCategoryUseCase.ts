@@ -1,6 +1,5 @@
 import { Category } from "../../entities/Category";
 import { ICategoryRequestDTO, ICategoriesRepository } from "../../repositories/ICategoriesRepository"
-import { hash } from "bcrypt";
 
 export class CreateCategoryUseCase {
     constructor(

@@ -1,13 +1,11 @@
 import { CategoryRepository } from "../../repositories/implementations/CategoryRepository";
-import { ListUserController } from "./ListUserController";
-import { ListUserUseCase } from "./ListUserUseCase";
+import { ListCategoryController } from "./ListCategoryController";
+import { ListCategoryUseCase } from "./ListCategoryUseCase";
 
-export default(): ListUserController => {
-    const userRepository = new CategoryRepository();
+export default(): ListCategoryController => {
+    const categoryRepository        = new CategoryRepository();
+    const listCategoryUseCase       = new ListCategoryUseCase(categoryRepository);
+    const listCategorysController   = new ListCategoryController(listCategoryUseCase);
 
-    const listUserUseCase = new ListUserUseCase(userRepository);
-
-    const listUsersController = new ListUserController(listUserUseCase);
-
-    return listUsersController;
+    return listCategorysController;
 }
