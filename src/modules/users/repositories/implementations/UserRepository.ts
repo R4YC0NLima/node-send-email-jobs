@@ -11,11 +11,16 @@ export class UserRepository implements IUsersRepository {
     }  
 
     async destroy(id: string): Promise<void> {
+        const user = await this.repository.findOne(id);
+
+        if(!user){
+          throw new Error("Usuário não encontrado!");
+        }
         await this.repository.delete(id);
     }
 
     async findById(id: string): Promise<User> {
-        const findId = await this.repository.findOne({id});
+        const findId = await this.repository.findOne(id);
         return findId!;
     }
 
@@ -44,14 +49,16 @@ export class UserRepository implements IUsersRepository {
         return user;
     }
 
-    async update(id: string, data: IUserRequestDTO): Promise<User> {
-        await this.repository.update(id, {
-            name        :   data.name,
-            email       :   data.email,
-            password    :   data.password
-        });
+    async update(id: string, data: User): Promise<User> {
+        const user = await this.repository.findOne(id);
 
-        return this.repository.save(data);
+        if(!user){
+          throw new Error("Usuário não encontrado!");
+        }
+
+        await this.repository.update(user.id, data);
+
+        return data;
     }
 
     async show(id: string): Promise<User> {
